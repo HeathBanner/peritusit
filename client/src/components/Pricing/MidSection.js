@@ -1,9 +1,4 @@
-import React, {
-    useState,
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
+import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -143,10 +138,9 @@ const remoteList = [
     },
 ];
 
-const MidSection = () => {
+export default ({ xs }) => {
     
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     const [onsite, setOnsite] = useState(true);
     const [shop, setShop] = useState(true);
@@ -157,7 +151,7 @@ const MidSection = () => {
 
             <Typography
                 style={{ width: '100%' }}
-                variant={media.xs ? 'h5' : 'h4'}
+                variant={xs ? 'h5' : 'h4'}
                 align="center"
             >
                 We offer various levels of service
@@ -177,7 +171,7 @@ const MidSection = () => {
                         primary="Onsite service at an hourly rate of $95.00 billed to the 
                         1/2 hour."
                         primaryTypographyProps={{
-                            variant: media.xs ? 'h6' : 'h5',
+                            variant: xs ? 'h6' : 'h5',
                         }}
                     />
                     <div className={classes.expand}>
@@ -198,23 +192,21 @@ const MidSection = () => {
                     unmountOnExit
                     style={{ width: '100%' }}
                 >
-                    {
-                        onSiteList.map((item) => {
-                            return (
-                                <ListItem
-                                    className={classes.nested}
-                                    key={item.text}
-                                >
-                                    <ListItemText
-                                        primary={item.text}
-                                        primaryTypographyProps={{
-                                            variant: media.xs ? 'body1' : 'h6'
-                                        }}
-                                    />
-                                </ListItem>
-                            )
-                        })
-                    }
+                    {onSiteList.map((item) => {
+                        return (
+                            <ListItem
+                                className={classes.nested}
+                                key={item.text}
+                            >
+                                <ListItemText
+                                    primary={item.text}
+                                    primaryTypographyProps={{
+                                        variant: xs ? 'body1' : 'h6'
+                                    }}
+                                />
+                            </ListItem>
+                        )
+                    })}
                 </Collapse>
 
                 <ListItem
@@ -226,7 +218,7 @@ const MidSection = () => {
                         className={classes.listText}
                         primary="Shop service at $80.00 per hour or fixed rate projects"
                         primaryTypographyProps={{
-                            variant: media.xs ? 'h6' : 'h5'
+                            variant: xs ? 'h6' : 'h5'
                         }}
                     />
                     <div className={classes.expand}>
@@ -247,23 +239,21 @@ const MidSection = () => {
                     unmountOnExit
                     style={{ width: '100%' }}
                 >
-                    {
-                        shopList.map((item) => {
-                            return (
-                                <ListItem
-                                    className={classes.nested}
-                                    key={item.text}
-                                >
-                                    <ListItemText
-                                        primary={item.text}
-                                        primaryTypographyProps={{
-                                            variant: media.xs ? 'body1' : 'h6'
-                                        }}
-                                    />
-                                </ListItem>
-                            )
-                        })
-                    }
+                    {shopList.map((item) => {
+                        return (
+                            <ListItem
+                                className={classes.nested}
+                                key={item.text}
+                            >
+                                <ListItemText
+                                    primary={item.text}
+                                    primaryTypographyProps={{
+                                        variant: xs ? 'body1' : 'h6'
+                                    }}
+                                />
+                            </ListItem>
+                        )
+                    })}
                 </Collapse>
 
                 <ListItem
@@ -275,7 +265,7 @@ const MidSection = () => {
                         className={classes.listText}
                         primary="Remote Service at $70.00 per session"
                         primaryTypographyProps={{
-                            variant: media.xs ? 'h6' : 'h5'
+                            variant: xs ? 'h6' : 'h5'
                         }}
                     />
                     <div className={classes.expand}>
@@ -296,23 +286,21 @@ const MidSection = () => {
                     unmountOnExit
                     style={{ width: '100%' }}
                 >
-                    {
-                        remoteList.map((item) => {
-                            return (
-                                <ListItem
-                                    className={classes.nested}
-                                    key={item.text}
-                                >
-                                    <ListItemText
-                                        primary={item.text}
-                                        primaryTypographyProps={{
-                                            variant: media.xs ? 'body1' : 'h6'
-                                        }}
-                                    />
-                                </ListItem>
-                            )
-                        })
-                    }
+                    {remoteList.map((item) => {
+                        return (
+                            <ListItem
+                                className={classes.nested}
+                                key={item.text}
+                            >
+                                <ListItemText
+                                    primary={item.text}
+                                    primaryTypographyProps={{
+                                        variant: xs ? 'body1' : 'h6'
+                                    }}
+                                />
+                            </ListItem>
+                        )
+                    })}
                 </Collapse>
 
             </List>
@@ -320,5 +308,3 @@ const MidSection = () => {
         </Grid>
     );
 };
-
-export default MidSection;

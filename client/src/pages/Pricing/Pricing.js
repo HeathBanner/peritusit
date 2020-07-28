@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { MediaContext } from '../../context/Media';
 
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
-
-import Nav from '../../components/Navigation/Appbar';
 import Landing from '../../components/Pricing/Landing';
 import MidSection from '../../components/Pricing/MidSection';
 import BottomSection from '../../components/Pricing/BottomSection';
+
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     middleDiv: {
@@ -26,25 +26,20 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Pricing = ( ) => {
+export default () => {
 
     const classes = useStyles();
+    const context = useContext(MediaContext);
 
     return (
         <Grid container>
+            <Landing xs={context.xs} />
 
-            <Nav />
-
-            <Landing />
-
-            <MidSection />
+            <MidSection xs={context.xs} />
 
             <Grid className={classes.middleDiv} item xs={12} ></Grid>
 
-            <BottomSection />
-
+            <BottomSection xs={context.xs} />
         </Grid>
     );
 };
-
-export default Pricing;

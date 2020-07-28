@@ -1,15 +1,7 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-    Divider,
-} from '@material-ui/core';
+import { Grid, Typography, Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -58,10 +50,9 @@ const mailInfo = [
     },
 ];
 
-const Info = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
@@ -69,7 +60,7 @@ const Info = () => {
             <Typography
                 className={classes.mailHeader}
                 align="center"
-                variant={media.xs ? 'h6' : 'h5'}
+                variant={xs ? 'h6' : 'h5'}
             >
                 Email
             </Typography>
@@ -79,7 +70,7 @@ const Info = () => {
             <Typography
                 className={classes.mailInfo}
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 info@peritusit.com
             </Typography>
@@ -87,30 +78,26 @@ const Info = () => {
             <Typography
                 className={classes.mailHeader}
                 align="center"
-                variant={media.xs ? 'h6' : 'h5'}
+                variant={xs ? 'h6' : 'h5'}
             >
                 Mailing Address
             </Typography>
 
             <Divider className={classes.divider} />
 
-            {
-                mailInfo.map((item, index) => {
-                    return (
-                        <Typography
-                            className={classes.mailInfo}
-                            align="center"
-                            variant={media.xs ? 'body1' : 'h6'}
-                            key={index}
-                        >
-                            {item.text}
-                        </Typography>
-                    )
-                })
-            }
+            {mailInfo.map((item, index) => {
+                return (
+                    <Typography
+                        className={classes.mailInfo}
+                        align="center"
+                        variant={xs ? 'body1' : 'h6'}
+                        key={index}
+                    >
+                        {item.text}
+                    </Typography>
+                );
+            })}
             
         </Grid>
     );
 };
-
-export default Info;

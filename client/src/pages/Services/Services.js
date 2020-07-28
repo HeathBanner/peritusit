@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { MediaContext } from '../../context/Media';
 
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
-
-import Nav from '../../components/Navigation/Appbar';
 import Landing from '../../components/Services/Landing';
 import ServicesList from '../../components/Services/ServicesList';
 import AdditionalServices from '../../components/Services/AdditionalServices';
+
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     middleDiv: {
@@ -26,25 +26,20 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Services = () => {
+export default () => {
 
     const classes = useStyles();
+    const context = useContext(MediaContext);
 
     return (
         <Grid container>
+            <Landing xs={context.xs} />
 
-            <Nav />
-
-            <Landing />
-
-            <ServicesList />
+            <ServicesList xs={context.xs} />
 
             <Grid className={classes.middleDiv} item xs={12} ></Grid>
 
-            <AdditionalServices />
-
+            <AdditionalServices xs={context.xs} />
         </Grid>
     );
 };
-
-export default Services;

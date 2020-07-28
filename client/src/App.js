@@ -1,14 +1,12 @@
 import React from 'react';
 
-import {
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import './Reset.css';
 
 import { MediaProvider } from './context/Media';
 
+import Navigation from './components/Navigation/Appbar';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Strategy from './pages/Strategy/Strategy';
@@ -19,9 +17,10 @@ import Partnerships from './pages/Partnerships/Partnerships';
 import Testimonials from './pages/Testimonials/Testimonials';
 import Contact from './pages/Contact/Contact';
 
-const App = () => {
+export default () => {
   return (
     <MediaProvider>
+      <Navigation />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
@@ -35,6 +34,4 @@ const App = () => {
       </Switch>
     </MediaProvider>
   );
-}
-
-export default App;
+};

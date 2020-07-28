@@ -1,9 +1,8 @@
-import React, {
-    useState,
-    useContext,
-} from 'react';
+import React, { useState } from 'react';
 
-import { MediaContext } from '../../context/Media';
+import SuccessNotification from '../Notifications/SuccessNotification';
+import ErrorNotification from '../Notifications/ErrorNotification';
+import WarningNotification from '../Notifications/WarningNotification';
 
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -14,10 +13,6 @@ import {
     TextField,
     Button,
 } from '@material-ui/core';
-
-import SuccessNotification from '../Notifications/SuccessNotification';
-import ErrorNotification from '../Notifications/ErrorNotification';
-import WarningNotification from '../Notifications/WarningNotification';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -73,10 +68,9 @@ const initNotifications = {
     message: '',
 };
 
-const Form = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     const [info, setInfo] = useState({ ...initInfo });
     const [success, setSuccess] = useState({ ...initNotifications });
@@ -109,42 +103,40 @@ const Form = () => {
         }
     };
 
-    const handleSubmit = () => {
-        fetch('/api/contact', {
-            method: 'POST',
-            body: JSON.stringify(info),
-            headers: { 'Content-Type': 'application/json' },
-        })
-            .then(res => res.json())
-            .then((result) => {
-                if (!result) {
-                    return setError({
-                        open: true,
-                        message: 'Something went wrong!',
-                    });
-                }
-                setSuccess({
-                    open: true,
-                    message: result.message,
-                });
-                setInfo({ ...initInfo });
-            })
-            .catch(() => {
-                setError({
+    const handleSubmit = async () => {
+        try {
+            const result = await fetch('/api/contact', {
+                method: 'POST',
+                body: JSON.stringify(info),
+                headers: { 'Content-Type': 'application/json' },
+            });
+            const json = await result.json();
+            if (!json) {
+                return setError({
                     open: true,
                     message: 'Something went wrong!',
                 });
+            }
+            setSuccess({
+                open: true,
+                message: result.message,
             });
+            setInfo({ ...initInfo });
+        } catch (error) {
+            setError({
+                open: true,
+                message: 'Something went wrong!',
+            });
+        }
     };
 
     return (
         <Grid className={classes.container} item xs={12}>
-
             <Paper className={classes.paper}>
 
                 <Typography
                     className={classes.header}
-                    variant={media.xs ? 'h4' : 'h3'}
+                    variant={xs ? 'h4' : 'h3'}
                     align="center"
                 >
                     Contact Us
@@ -205,5 +197,3 @@ const Form = () => {
         </Grid>
     );
 };
-
-export default Form;

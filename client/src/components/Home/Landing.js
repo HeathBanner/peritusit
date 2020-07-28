@@ -1,18 +1,9 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
-
-import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-    Divider,
-    Button,
-} from '@material-ui/core';
+import React from 'react';
 
 import Nasa from './imgs/nasa.jpg';
+
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography, Divider, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -85,10 +76,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Landing = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
@@ -96,7 +86,7 @@ const Landing = () => {
             <Typography
                 className={classes.landingHeader}
                 align="center"
-                variant={media.xs ? 'h5' : 'h4'}
+                variant={xs ? 'h5' : 'h4'}
             >
                 IT Service, Support and Consulting when and where you need it
             </Typography>
@@ -105,7 +95,7 @@ const Landing = () => {
 
             <Typography
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 Peritus IT Solutions is a full-service IT consulting company based in Charlotte NC. We apply unique 
                 technology solutions to your small business. Our strategy is the ideal starting point for a successful 
@@ -121,7 +111,7 @@ const Landing = () => {
                     className={classes.landingButton}
                 >
                     <Typography
-                        variant={media.xs ? 'body1' : 'h6'}
+                        variant={xs ? 'body1' : 'h6'}
                     >
                         More
                     </Typography>
@@ -133,5 +123,3 @@ const Landing = () => {
         </Grid>
     );
 };
-
-export default Landing;

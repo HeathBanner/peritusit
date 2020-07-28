@@ -1,7 +1,4 @@
-import React, {
-    useState,
-    useContext,
-} from 'react';
+import React, { useState, useContext } from 'react';
 
 import { MediaContext } from '../../context/Media';
 
@@ -88,7 +85,7 @@ const drawerContent = [
   },
 ];
 
-const TempDrawer = (props) => {
+export default ({ trigger }) => {
 
   const classes = useStyles();
   const media = useContext(MediaContext);
@@ -110,8 +107,7 @@ const TempDrawer = (props) => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {
-          drawerContent.map((item) => (
+        {drawerContent.map((item) => (
             <a
               className={classes.links}
               href={item.link}
@@ -133,8 +129,7 @@ const TempDrawer = (props) => {
                 />
               </ListItem>
             </a>
-          ))
-        }
+          ))}
       </List>
     </div>
   );
@@ -146,7 +141,7 @@ const TempDrawer = (props) => {
             onClick={toggleDrawer(true)}
         >
             <Icon
-              className={props.trigger ? classes.iconTrigger : classes.icon}
+              className={trigger ? classes.iconTrigger : classes.icon}
               fontSize={media.xs ? 'small' : 'large'}
             >
                 menu
@@ -154,10 +149,8 @@ const TempDrawer = (props) => {
         </Button>
 
         <Drawer open={state} onClose={toggleDrawer(false)}>
-            {sideList('left')}
+            {sideList()}
         </Drawer>
     </div>
   );
 };
-
-export default TempDrawer;

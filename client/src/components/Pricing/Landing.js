@@ -1,16 +1,9 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
-
-import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-} from '@material-ui/core';
+import React from 'react';
 
 import Cover from './imgs/jose-aljovin.jpg';
+
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -83,10 +76,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Landing = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
@@ -94,7 +86,7 @@ const Landing = () => {
             <Typography
                 className={classes.landingHeader}
                 align="center"
-                variant={media.xs ? 'h5' : 'h4'}
+                variant={xs ? 'h5' : 'h4'}
             >
                 Our business model and pricing structure is quite simple, on most 
                 projects, we use a "time and materials," strategy.
@@ -105,5 +97,3 @@ const Landing = () => {
         </Grid>
     );
 };
-
-export default Landing;

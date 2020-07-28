@@ -1,24 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { MediaContext } from '../../context/Media';
 
-import { Grid } from '@material-ui/core';
-
-import Nav from '../../components/Navigation/Appbar';
 import Landing from '../../components/Strategy/Landing';
 import Pillars from '../../components/Strategy/Pillars';
 
-const Strategy = () => {
+import { Grid } from '@material-ui/core';
 
-    return(
+export default () => {
+
+    const context = useContext(MediaContext);
+
+    return (
         <Grid container>
+            <Landing xs={context.xs} />
 
-            <Nav />
-
-            <Landing />
-
-            <Pillars />
-
+            <Pillars xs={context.xs} />
         </Grid>
     );
 };
-
-export default Strategy;

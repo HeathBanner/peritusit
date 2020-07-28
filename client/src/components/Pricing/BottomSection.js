@@ -1,14 +1,7 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-} from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -73,31 +66,24 @@ const outroText = [
     },
 ];
 
-const BottomSection = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
-
-            {
-                outroText.map((item, index) => {
-                    return (
-                        <Typography
-                            className={classes.text}
-                            variant={media.xs ? 'body1' : 'h6'}
-                            align="center"
-                            key={index}
-                        >
-                            {item.text}
-                        </Typography>
-                    );
-                })
-            }
-
+            {outroText.map((item, index) => {
+                return (
+                    <Typography
+                        className={classes.text}
+                        variant={xs ? 'body1' : 'h6'}
+                        align="center"
+                        key={index}
+                    >
+                        {item.text}
+                    </Typography>
+                );
+            })}
         </Grid>
     );
 };
-
-export default BottomSection;

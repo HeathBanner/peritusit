@@ -1,16 +1,7 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-    Divider,
-    Button,
-} from '@material-ui/core';
+import { Grid, Typography, Divider, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -60,10 +51,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const BottomSection = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
@@ -71,7 +61,7 @@ const BottomSection = () => {
             <Typography
                 className={classes.midHeader}
                 align="center"
-                variant={media.xs ? 'h5' : 'h4'}
+                variant={xs ? 'h5' : 'h4'}
             >
                 Leave IT to us and get down to business
             </Typography>
@@ -80,7 +70,7 @@ const BottomSection = () => {
 
             <Typography
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 Migrating to a new platform? Need help planning your IT budget? Lack the resources to develop 
                 new software? You've come to the right place. Click below to discover our full range of services 
@@ -95,7 +85,7 @@ const BottomSection = () => {
                     className={classes.bottButton}
                 >
                     <Typography
-                        variant={media.xs ? 'body1' : 'h6'}
+                        variant={xs ? 'body1' : 'h6'}
                     >
                         More
                     </Typography>
@@ -105,5 +95,3 @@ const BottomSection = () => {
         </Grid>
     );
 };
-
-export default BottomSection;

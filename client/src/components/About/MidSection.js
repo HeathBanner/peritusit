@@ -1,15 +1,7 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-    Divider,
-} from '@material-ui/core';
+import { Grid, Typography, Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -39,10 +31,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const MidSection = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
@@ -51,7 +42,7 @@ const MidSection = () => {
                 className={classes.aboutBody}
                 align="center"
                 style={{ marginBottom: 40 }}
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 For years, we have been providing reliable IT solutions to businesses 
                 in the Charlotte area and beyond. Our comprehensive services provide 
@@ -64,7 +55,7 @@ const MidSection = () => {
             <Typography
                 className={classes.aboutBody}
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 Look to our experts for strategic IT guidance, management and support 
                 that allows you to take your mind off technology and concentrate on your 
@@ -75,5 +66,3 @@ const MidSection = () => {
         </Grid>
     );
 };
-
-export default MidSection;

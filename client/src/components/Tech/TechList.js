@@ -1,15 +1,7 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-    Divider,
-} from '@material-ui/core';
+import { Grid, Typography, Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -97,17 +89,16 @@ const miscApps = [
     },
 ];
 
-const TechList = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
 
             <Typography
                 className={classes.listHeaders}
-                variant={media.xs ? 'h5' : 'h4'}
+                variant={xs ? 'h5' : 'h4'}
                 align="center"
             >
                 Desktop Operating Systems
@@ -115,26 +106,24 @@ const TechList = () => {
 
             <Divider className={classes.divider} />
 
-            {
-                desktopSystems.map((item, index) => {
-                    return (
-                        <Typography
-                            className={classes.listBodys}
-                            align="center"
-                            color="textSecondary"
-                            variant={media.xs ? 'body1' : 'h6'}
-                            key={`desktop ${index}`}
-                        >
-                            {item.text}
-                        </Typography>
-                    );
-                })
-            }
+            {desktopSystems.map((item, index) => {
+                return (
+                    <Typography
+                        className={classes.listBodys}
+                        align="center"
+                        color="textSecondary"
+                        variant={xs ? 'body1' : 'h6'}
+                        key={`desktop ${index}`}
+                    >
+                        {item.text}
+                    </Typography>
+                );
+            })}
 
             <Typography
                 className={classes.listHeaders}
                 style={{ marginTop: 60 }}
-                variant={media.xs ? 'h5' : 'h4'}
+                variant={xs ? 'h5' : 'h4'}
                 align="center"
             >
                 Server Operating Systems
@@ -142,26 +131,24 @@ const TechList = () => {
 
             <Divider className={classes.divider} />
 
-            {
-                serverSystems.map((item, index) => {
-                    return (
-                        <Typography
-                            className={classes.listBodys}
-                            align="center"
-                            color="textSecondary"
-                            variant={media.xs ? 'body1' : 'h6'}
-                            key={`server ${index}`}
-                        >
-                            {item.text}
-                        </Typography>
-                    );
-                })
-            }
+            {serverSystems.map((item, index) => {
+                return (
+                    <Typography
+                        className={classes.listBodys}
+                        align="center"
+                        color="textSecondary"
+                        variant={xs ? 'body1' : 'h6'}
+                        key={`server ${index}`}
+                    >
+                        {item.text}
+                    </Typography>
+                );
+            })}
 
             <Typography
                 className={classes.listHeaders}
                 style={{ marginTop: 60 }}
-                variant={media.xs ? 'h5' : 'h4'}
+                variant={xs ? 'h5' : 'h4'}
                 align="center"
             >
                 Microsoft Applications
@@ -169,26 +156,24 @@ const TechList = () => {
 
             <Divider className={classes.divider} />
 
-            {
-                microsoftApps.map((item, index) => {
-                    return (
-                        <Typography
-                            className={classes.listBodys}
-                            align="center"
-                            color="textSecondary"
-                            variant={media.xs ? 'body1' : 'h6'}
-                            key={`micro ${index}`}
-                        >
-                            {item.text}
-                        </Typography>
-                    );
-                })
-            }
+            {microsoftApps.map((item, index) => {
+                return (
+                    <Typography
+                        className={classes.listBodys}
+                        align="center"
+                        color="textSecondary"
+                        variant={xs ? 'body1' : 'h6'}
+                        key={`micro ${index}`}
+                    >
+                        {item.text}
+                    </Typography>
+                );
+            })}
 
             <Typography
                 className={classes.listHeaders}
                 style={{ marginTop: 60 }}
-                variant={media.xs ? 'h5' : 'h4'}
+                variant={xs ? 'h5' : 'h4'}
                 align="center"
             >
                 Miscellaneous Applications
@@ -196,24 +181,20 @@ const TechList = () => {
 
             <Divider className={classes.divider} />
 
-            {
-                miscApps.map((item, index) => {
-                    return (
-                        <Typography
-                            className={classes.listBodys}
-                            align="center"
-                            color="textSecondary"
-                            variant={media.xs ? 'body1' : 'h6'}
-                            key={`misc ${index}`}
-                        >
-                            {item.text}
-                        </Typography>
-                    );
-                })
-            }
+            {miscApps.map((item, index) => {
+                return (
+                    <Typography
+                        className={classes.listBodys}
+                        align="center"
+                        color="textSecondary"
+                        variant={xs ? 'body1' : 'h6'}
+                        key={`misc ${index}`}
+                    >
+                        {item.text}
+                    </Typography>
+                );
+            })}
 
         </Grid>
     );
 };
-
-export default TechList;

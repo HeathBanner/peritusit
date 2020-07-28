@@ -1,8 +1,4 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -81,10 +77,9 @@ const additionalList = [
     },
 ];
 
-const AdditionalServices = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
@@ -92,7 +87,7 @@ const AdditionalServices = () => {
             <Typography
                 className={classes.listHeader}
                 align="center"
-                variant={media.xs ? 'h5' : 'h4'}
+                variant={xs ? 'h5' : 'h4'}
             >
                 Additional Services
             </Typography>
@@ -100,32 +95,28 @@ const AdditionalServices = () => {
             <Divider className={classes.divider} />
 
             <List>
-                {
-                    additionalList.map((item) => {
-                        return (
-                            <ListItem key={item.text}>
+                {additionalList.map((item) => {
+                    return (
+                        <ListItem key={item.text}>
 
-                                <ListItemAvatar>
-                                    <Icon>
-                                        {item.icon}
-                                    </Icon>
-                                </ListItemAvatar>
+                            <ListItemAvatar>
+                                <Icon>
+                                    {item.icon}
+                                </Icon>
+                            </ListItemAvatar>
 
-                                <ListItemText
-                                    primary={item.text}
-                                    primaryTypographyProps={{
-                                        variant: media.xs ? 'body1' : 'h6'
-                                    }}
-                                />
+                            <ListItemText
+                                primary={item.text}
+                                primaryTypographyProps={{
+                                    variant: xs ? 'body1' : 'h6'
+                                }}
+                            />
 
-                            </ListItem>
-                        );
-                    })
-                }
+                        </ListItem>
+                    );
+                })}
             </List>
 
         </Grid>
     );
 };
-
-export default AdditionalServices;

@@ -1,17 +1,7 @@
-import React, {
-    Fragment,
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
+import React, { Fragment } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-    Divider,
-    Icon,
-} from '@material-ui/core';
+import { Grid, Typography, Divider, Icon } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -96,10 +86,9 @@ const pillarContent = [
     },
 ];
 
-const Pillars = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
@@ -107,46 +96,42 @@ const Pillars = () => {
             <Typography
                 className={classes.pillarsIntro}
                 align="center"
-                variant={media.xs ? 'h6' : 'h5'}
+                variant={xs ? 'h6' : 'h5'}
             >
                 These are the five pillars of our successful IT strategy:
             </Typography>
 
-            {
-                pillarContent.map((item) => {
-                    return (
-                        <Fragment key={item.title}>
-                            <Typography
-                                className={classes.pillarsHeaders}
-                                align="center"
-                                variant={media.xs ? 'h4' : 'h3'}
-                            >
-                                {item.title}
-                            </Typography>
-                
-                            <Icon
-                                className={classes.icons}
-                                fontSize={media.xs ? 'small' : 'large'}
-                            >
-                                {item.icon}
-                            </Icon>
-                
-                            <Divider className={classes.divider} />
-                
-                            <Typography
-                                className={classes.pillarsBody}
-                                align="center"
-                                variant={media.xs ? 'body1' : 'h6'}
-                            >
-                                {item.body}
-                            </Typography>
-                        </Fragment>
-                    );
-                })
-            }
+            {pillarContent.map((item) => {
+                return (
+                    <Fragment key={item.title}>
+                        <Typography
+                            className={classes.pillarsHeaders}
+                            align="center"
+                            variant={xs ? 'h4' : 'h3'}
+                        >
+                            {item.title}
+                        </Typography>
+            
+                        <Icon
+                            className={classes.icons}
+                            fontSize={xs ? 'small' : 'large'}
+                        >
+                            {item.icon}
+                        </Icon>
+            
+                        <Divider className={classes.divider} />
+            
+                        <Typography
+                            className={classes.pillarsBody}
+                            align="center"
+                            variant={xs ? 'body1' : 'h6'}
+                        >
+                            {item.body}
+                        </Typography>
+                    </Fragment>
+                );
+            })}
 
         </Grid>
     );
 };
-
-export default Pillars;

@@ -1,16 +1,7 @@
-import React, {
-    Fragment,
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
+import React, { Fragment } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-    Divider,
-} from '@material-ui/core';
+import { Grid, Typography, Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -80,42 +71,35 @@ const servicesContent = [
     },
 ];
 
-const ServicesList = () => {
+export default ({ xs }) => {
     
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
+            {servicesContent.map((item) => {
+                return (
+                    <Fragment key={item.title}>
+                        <Typography
+                            className={classes.listHeaders}
+                            align="center"
+                            variant={xs ? 'h5' : 'h4'}
+                        >
+                            {item.title}
+                        </Typography>
 
-            {
-                servicesContent.map((item) => {
-                    return (
-                        <Fragment key={item.title}>
-                            <Typography
-                                className={classes.listHeaders}
-                                align="center"
-                                variant={media.xs ? 'h5' : 'h4'}
-                            >
-                                {item.title}
-                            </Typography>
+                        <Divider className={classes.divider} />
 
-                            <Divider className={classes.divider} />
-
-                            <Typography
-                                className={classes.listBodys}
-                                align="center"
-                                variant={media.xs ? 'body1' : 'h6'}
-                            >
-                                {item.body}
-                            </Typography>
-                        </Fragment>
-                    );
-                })
-            }
-
+                        <Typography
+                            className={classes.listBodys}
+                            align="center"
+                            variant={xs ? 'body1' : 'h6'}
+                        >
+                            {item.body}
+                        </Typography>
+                    </Fragment>
+                );
+            })}
         </Grid>
     );
 };
-
-export default ServicesList;

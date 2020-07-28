@@ -1,17 +1,9 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
-
-import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-    Divider,
-} from '@material-ui/core';
+import React from 'react';
 
 import Consultant from './imgs/thomas-drouault.jpg';
+
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography, Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -69,10 +61,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Landing = () => {
+export default ({ xs }) => {
     
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
@@ -80,7 +71,7 @@ const Landing = () => {
             <Typography
                 className={classes.landingHeader}
                 align="center"
-                variant={media.xs ? 'h5' : 'h4'}
+                variant={xs ? 'h5' : 'h4'}
             >
                 Our Strategy: Your Path to Success
             </Typography>
@@ -90,7 +81,7 @@ const Landing = () => {
             <Typography
                 className={classes.stratBody}
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 Our time-tested strategy produces sound and sustainable IT solutions for every facet of your business 
                 operations, right down to the smallest detail.
@@ -99,7 +90,7 @@ const Landing = () => {
             <Typography
                 className={classes.stratBody}
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 Our team of professional consultants are held to high standards. In accordance with our many years of 
                 experience, we have developed a methodology that has produced consistent results across the board.
@@ -108,7 +99,7 @@ const Landing = () => {
             <Typography
                 className={classes.stratBody}
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 In most cases, we have analyzed and found cost effective solutions for similiar organizations such as 
                 yours. We know what works, and what doesn't.
@@ -119,5 +110,3 @@ const Landing = () => {
         </Grid>
     );
 };
-
-export default Landing;

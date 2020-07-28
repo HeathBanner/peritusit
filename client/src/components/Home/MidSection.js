@@ -1,16 +1,7 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-    Divider,
-    Button,
-} from '@material-ui/core';
+import { Grid, Typography, Divider, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -60,10 +51,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const MidSection = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
@@ -71,7 +61,7 @@ const MidSection = () => {
             <Typography
                 className={classes.midHeader}
                 align="center"
-                variant={media.xs ? 'h5' : 'h4'}
+                variant={xs ? 'h5' : 'h4'}
             >
                 Unique solutions for your business
             </Typography>
@@ -80,7 +70,7 @@ const MidSection = () => {
 
             <Typography
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 No two businesses are the same. We believe the technology supporting your business operations 
                 should reflect the specific needs of your company. That's why we offer unique IT solutions.
@@ -95,7 +85,7 @@ const MidSection = () => {
                     className={classes.midButton}
                 >
                     <Typography
-                        variant={media.xs ? 'body1' : 'h6'}
+                        variant={xs ? 'body1' : 'h6'}
                     >
                         More
                     </Typography>
@@ -105,5 +95,3 @@ const MidSection = () => {
         </Grid>
     );
 };
-
-export default MidSection;

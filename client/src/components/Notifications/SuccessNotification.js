@@ -2,13 +2,7 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
-import {
-    Snackbar,
-    SnackbarContent,
-    Typography,
-    Icon,
-    Button,
-} from '@material-ui/core';
+import { Snackbar, SnackbarContent, Typography, Icon, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     success: {
@@ -34,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const SuccessNotification = (props) => {
+export default ({ success, toLogin, closeSuccess}) => {
 
     const classes = useStyles();
 
@@ -44,9 +38,9 @@ const SuccessNotification = (props) => {
                 vertical: 'top',
                 horizontal: 'center',
             }}
-            open={props.success.open}
+            open={success.open}
             autoHideDuration={6000}
-            onExit={props.toLogin}
+            onExit={toLogin}
         >
             <SnackbarContent
                 className={classes.success}
@@ -61,13 +55,13 @@ const SuccessNotification = (props) => {
                         <Icon className={classes.icon}>
                             check
                         </Icon>
-                        {props.success.message}
+                        {success.message}
                     </Typography>
                 }
                 action={
                     <Button
                         className={classes.button}
-                        onClick={props.closeSuccess}
+                        onClick={closeSuccess}
                     >
                         <Icon>close</Icon>
                     </Button>
@@ -76,5 +70,3 @@ const SuccessNotification = (props) => {
         </Snackbar>
     );
 };
-
-export default SuccessNotification;

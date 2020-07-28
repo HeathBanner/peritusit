@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ErrorNotification = (props) => {
+export default ({ error, closeError}) => {
 
     const classes = useStyles();
 
@@ -43,15 +43,13 @@ const ErrorNotification = (props) => {
                 vertical: 'top',
                 horizontal: 'center',
             }}
-            open={props.error.open}
+            open={error.open}
             autoHideDuration={6000}
-            onClose={props.closeError}
+            onClose={closeError}
         >
             <SnackbarContent
                 className={classes.error}
-                classes={{
-                    message: classes.message,
-                }}
+                classes={{ message: classes.message }}
                 message={
                     <Typography
                         variant="body2"
@@ -60,13 +58,13 @@ const ErrorNotification = (props) => {
                         <Icon className={classes.icon}>
                             error
                         </Icon>
-                        {props.error.message}
+                        {error.message}
                     </Typography>
                 }
                 action={
                     <Button
                         className={classes.button}
-                        onClick={props.closeError}
+                        onClick={closeError}
                     >
                         <Icon>close</Icon>
                     </Button>
@@ -75,5 +73,3 @@ const ErrorNotification = (props) => {
         </Snackbar>
     );
 };
-
-export default ErrorNotification;

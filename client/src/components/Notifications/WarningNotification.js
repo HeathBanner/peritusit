@@ -2,13 +2,7 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { amber } from '@material-ui/core/colors';
-import {
-    Snackbar,
-    SnackbarContent,
-    Typography,
-    Icon,
-    Button,
-} from '@material-ui/core';
+import { Snackbar, SnackbarContent, Typography, Icon, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     warning: {
@@ -34,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const WarningNotification = (props) => {
+export default ({ warning, closeWarning}) => {
 
     const classes = useStyles();
 
@@ -44,19 +38,17 @@ const WarningNotification = (props) => {
                 vertical: 'top',
                 horizontal: 'center',
             }}
-            open={props.warning.open}
+            open={warning.open}
             autoHideDuration={6000}
-            onClose={props.closeWarning}
+            onClose={closeWarning}
         >
             <SnackbarContent
                 className={classes.warning}
-                classes={{
-                    message: classes.message,
-                }}
+                classes={{ message: classes.message }}
                 action={
                     <Button
                         className={classes.button}
-                        onClick={props.closeWarning}
+                        onClick={closeWarning}
                     >
                         <Icon>close</Icon>
                     </Button>
@@ -66,18 +58,14 @@ const WarningNotification = (props) => {
                         variant="body2"
                         align="center"
                     >
-
                         <Icon className={classes.icon}>
                             warning
                         </Icon>
 
-                        {props.warning.message}
-
+                        {warning.message}
                     </Typography>
                 }
             />
         </Snackbar>
     );
 };
-
-export default WarningNotification;

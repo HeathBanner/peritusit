@@ -1,17 +1,9 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
-
-import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-    Divider,
-} from '@material-ui/core';
+import React from 'react';
 
 import ContactPhoto from './imgs/priscilla-du-preez.jpg';
+
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography, Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -68,10 +60,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Landing = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
@@ -79,7 +70,7 @@ const Landing = () => {
             <Typography
                 className={classes.landingHeader}
                 align="center"
-                variant={media.xs ? 'h5' : 'h4'}
+                variant={xs ? 'h5' : 'h4'}
             >
                 Send Us Your Questions
             </Typography>
@@ -88,7 +79,7 @@ const Landing = () => {
 
             <Typography
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 At Peritus IT Solutions, we're dedicated to providing you with timely service and support. For all inquiries and requests, you may use the contact form below, or contact us directly.
             </Typography>
@@ -98,5 +89,3 @@ const Landing = () => {
         </Grid>
     );
 };
-
-export default Landing;

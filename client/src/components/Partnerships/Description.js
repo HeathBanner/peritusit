@@ -1,14 +1,7 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-} from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -34,10 +27,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Description = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
@@ -45,7 +37,7 @@ const Description = () => {
             <Typography
                 className={classes.body}
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 We are NOT a reseller of hardware, does not fit our business model. Instead, 
                 we work with vendors such as: Dell/HP/IBM for PC's and Servers, Synology for 
@@ -58,7 +50,7 @@ const Description = () => {
             <Typography
                 className={classes.body}
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 We also partner with various SaS (software as servcie) vendors: Cloudscale365 
                 for Office365, Cloudberry for managed back up, along with Backblaze for offsite 
@@ -70,7 +62,7 @@ const Description = () => {
             <Typography
                 className={classes.body}
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 After all, it is YOUR business and we are here to assist, facilitate, be of 
                 service and help your business operate effeciently and profitably.
@@ -79,7 +71,7 @@ const Description = () => {
             <Typography
                 className={classes.body}
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 We make our monies off services income.
             </Typography>
@@ -87,5 +79,3 @@ const Description = () => {
         </Grid>
     );
 };
-
-export default Description;

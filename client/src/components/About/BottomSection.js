@@ -1,16 +1,7 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-    Divider,
-    Button,
-} from '@material-ui/core';
+import { Grid, Typography, Divider, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -58,10 +49,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const BottomSection = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
@@ -69,7 +59,7 @@ const BottomSection = () => {
             <Typography
                 className={classes.bottomHeader}
                 align="center"
-                variant={media.xs ? 'h4' : 'h3'}
+                variant={xs ? 'h4' : 'h3'}
             >
                 We're connected
             </Typography>
@@ -79,7 +69,7 @@ const BottomSection = () => {
             <Typography
                 className={classes.bottomBody}
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 The success of your IT company also lies in its strategic alliances and 
                 partnerships. Peritus IT Solutions has cultivated relationships with some 
@@ -89,7 +79,7 @@ const BottomSection = () => {
             <Typography
                 className={classes.bottomBody}
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 View a list of our professional partnerships, alliances and supported 
                 technologies.
@@ -103,7 +93,7 @@ const BottomSection = () => {
                     className={classes.buttons}
                 >
                     <Typography
-                        variant={media.xs ? 'body1' : 'h6'}
+                        variant={xs ? 'body1' : 'h6'}
                     >
                         Partnerships
                     </Typography>
@@ -118,7 +108,7 @@ const BottomSection = () => {
                     className={classes.buttons}
                 >
                     <Typography
-                        variant={media.xs ? 'body1' : 'h6'}
+                        variant={xs ? 'body1' : 'h6'}
                     >
                         Supported Technologies
                     </Typography>
@@ -128,5 +118,3 @@ const BottomSection = () => {
         </Grid>
     );
 };
-
-export default BottomSection;

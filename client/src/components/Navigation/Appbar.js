@@ -1,12 +1,8 @@
-import React, {
-    Fragment,
-    useContext,
-} from 'react';
+import React, { Fragment, useContext } from 'react';
 
 import { MediaContext } from '../../context/Media';
 
 import PropTypes from 'prop-types';
-
 import TempDrawer from './Drawer';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,7 +16,7 @@ import {
     useScrollTrigger,
 } from '@material-ui/core';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     position: 'fixed',
     bottom: theme.spacing(2),
@@ -45,9 +41,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const ScrollTop = (props) => {
-
-  const { children } = props;
+const ScrollTop = ({ children, trigger}) => {
 
   const classes = useStyles();
 
@@ -60,7 +54,7 @@ const ScrollTop = (props) => {
   };
 
   return (
-    <Zoom in={props.trigger}>
+    <Zoom in={trigger}>
       <div onClick={handleClick} role="presentation" className={classes.root}>
         {children}
       </div>
@@ -73,7 +67,7 @@ ScrollTop.propTypes = {
   window: PropTypes.func,
 };
 
-const Nav = (props) => {
+export default (props) => {
 
   const window = props.window;
   const trigger = useScrollTrigger({
@@ -87,9 +81,7 @@ const Nav = (props) => {
 
   return (
       <Fragment>
-          <AppBar
-            className={trigger ? classes.appbarTrigger : classes.appbar}
-          >
+          <AppBar className={trigger ? classes.appbarTrigger : classes.appbar}>
 
               <Toolbar>
                   <TempDrawer trigger={trigger} />
@@ -104,10 +96,7 @@ const Nav = (props) => {
 
           </AppBar>
 
-          <Toolbar
-            className={classes.toolbar}
-            id="back-to-top-anchor"
-          />
+          <Toolbar className={classes.toolbar} id="back-to-top-anchor"/>
 
           <ScrollTop trigger={trigger} {...props}>
 
@@ -125,5 +114,3 @@ const Nav = (props) => {
       </Fragment>
   );
 };
-
-export default Nav;

@@ -1,17 +1,9 @@
-import React, {
-    useContext,
-} from 'react';
-
-import { MediaContext } from '../../context/Media';
-
-import { makeStyles } from '@material-ui/core/styles';
-import {
-    Grid,
-    Typography,
-    Divider,
-} from '@material-ui/core';
+import React from 'react';
 
 import Team from './imgs/ashkan-forouzani.jpg';
+
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Typography, Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -70,10 +62,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Landing = () => {
+export default ({ xs }) => {
 
     const classes = useStyles();
-    const media = useContext(MediaContext);
 
     return (
         <Grid className={classes.container} item xs={12}>
@@ -81,7 +72,7 @@ const Landing = () => {
             <Typography
                 className={classes.aboutHeader}
                 align="center"
-                variant={media.xs ? 'h4' : 'h3'}
+                variant={xs ? 'h4' : 'h3'}
             >
                 About Us
             </Typography>
@@ -91,7 +82,7 @@ const Landing = () => {
             <Typography
                 className={classes.aboutBody}
                 align="center"
-                variant={media.xs ? 'body1' : 'h6'}
+                variant={xs ? 'body1' : 'h6'}
             >
                 Peritus IT Solutions is an innovative and rapidly growing full-service IT consulting firm. 
                 We provide our clients with cutting-edge technologies and the know-how to apply them to their 
@@ -103,5 +94,3 @@ const Landing = () => {
         </Grid>
     );
 };
-
-export default Landing;

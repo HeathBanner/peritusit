@@ -1,15 +1,11 @@
-import React, {
-    createContext,
-} from 'react';
+import React, { createContext } from 'react';
 
 import { useTheme } from '@material-ui/core/styles';
-import {
-    useMediaQuery
-} from '@material-ui/core';
+import { useMediaQuery } from '@material-ui/core';
 
 export const MediaContext = createContext();
 
-export const MediaProvider = (props) => {
+export const MediaProvider = ({ children }) => {
 
     const theme = useTheme();
 
@@ -38,15 +34,9 @@ export const MediaProvider = (props) => {
 
     return (
         <MediaContext.Provider
-            value={{
-                xl,
-                lg,
-                md,
-                sm,
-                xs,
-            }}
+            value={{ xl, lg, md, sm, xs }}
         >
-            { props.children }
+            { children }
         </MediaContext.Provider>
     );
 };
